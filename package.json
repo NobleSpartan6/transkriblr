@@ -1,13 +1,13 @@
 {
   "name": "transkriblr",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chrome extension for audio transcription",
   "main": "webpack.config.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
+    "test": "jest",
+    "lint": "eslint src/"
   },
   "keywords": [],
   "author": "",
