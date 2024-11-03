@@ -15,14 +15,14 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "assets/icons/icon-16.png",
-      "48": "assets/icons/icon-48.png",
-      "128": "assets/icons/icon-128.png"
+      "16": "assets/icons/record_voice_over_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png",
+      "48": "assets/icons/record_voice_over_48dp_E8EAED_FILL0_wght400_GRAD0_opsz48.png",
+      "128": "assets/icons/record_voice_over_128dp_E8EAED_FILL0_wght400_GRAD0_opsz48.png"
     }
   },
   "icons": {
-    "16": "assets/icons/icon-16.png",
-    "48": "assets/icons/icon-48.png",
-    "128": "assets/icons/icon-128.png"
+    "16": "assets/icons/record_voice_over_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png",
+    "48": "assets/icons/record_voice_over_48dp_E8EAED_FILL0_wght400_GRAD0_opsz48.png",
+    "128": "assets/icons/record_voice_over_128dp_E8EAED_FILL0_wght400_GRAD0_opsz48.png"
   }
 }

@@ -30,7 +30,7 @@
     .recording-indicator {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       color: red;
       font-weight: bold;
     }
@@ -76,15 +76,55 @@
       border-top: 1px solid #ccc;
       font-size: 12px;
     }
+    .icon-button {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+    .icon-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .icon-button:hover:not(:disabled) {
+      background: #e0e0e0;
+    }
+    .button-icon {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .pulse {
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
   <div class="controls">
-    <button id="startBtn">Start Recording</button>
-    <button id="stopBtn" disabled>Stop Recording</button>
-    <button id="exportBtn">Export</button>
+    <button id="startBtn" class="icon-button">
+      <img src="../assets/icons/mic_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" alt="mic" class="button-icon">
+      Start Recording
+    </button>
+    <button id="stopBtn" class="icon-button" disabled>
+      <img src="../assets/icons/close_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" alt="stop" class="button-icon">
+      Stop
+    </button>
+    <button id="exportBtn" class="icon-button">
+      <img src="../assets/icons/download_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" alt="download" class="button-icon">
+      Export
+    </button>
     <div id="recordingIndicator" class="recording-indicator" style="display: none;">
-      <span>●</span> Recording
+      <img src="../assets/icons/mic_16dp_E8EAED_FILL0_wght400_GRAD0_opsz20.png" alt="recording" class="pulse">
+      Recording
     </div>
   </div>
   
