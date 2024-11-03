@@ -2,6 +2,8 @@ const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
+  devtool: 'source-map',
   entry: {
     popup: './src/popup/popup.js',
     background: './src/background/background.js',
@@ -11,6 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    clean: true
   },
   module: {
     rules: [
