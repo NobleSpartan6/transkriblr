@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transcriber Test Page</title>
+    <style>
+        body { padding: 20px; font-family: Arial; }
+        .test-section { margin: 20px 0; }
+        .test-button { padding: 10px; margin: 5px; }
+        #testResults { 
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transcriber Test Page</h1>
+    
+    <div class="test-section">
+        <h3>Audio Test</h3>
+        <audio controls>
+            <source src="test-audio.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="test-section">
+        <h3>Test Controls</h3>
+        <button class="test-button" onclick="runAllTests()">Run All Tests</button>
+        <button class="test-button" onclick="testAudioCapture()">Test Audio Capture</button>
+        <button class="test-button" onclick="testTranscription()">Test Transcription</button>
+    </div>
+
+    <div id="testResults">
+        <h3>Test Results:</h3>
+        <pre id="testOutput"></pre>
+    </div>
+
+    <script src="../lib/textProcessor.js"></script>
+    <script src="../lib/transcriber.js"></script>
+    <script src="test.js"></script>
+    <script>
+        function runAllTests() {
+            TranscriberTester.runTests()
+                .then(() => updateResults('All tests completed'))
+                .catch(err => updateResults('Test failed: ' + err.message));
+        }
+
+        function updateResults(message) {
+            document.getElementById('testOutput').textContent += message + '\n';
+        }
+    </script>
+</body>
+</html>
