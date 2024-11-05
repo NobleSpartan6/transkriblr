@@ -4,6 +4,7 @@ const DEBUG = true;
 // Global variables
 let audioContext;
 let transcriber;
+let currentTabId = null;
 
 // Debug logging
 function debugLog(...args) {
@@ -18,7 +19,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   
   switch (message.action) {
     case 'startRecording':
-      startCapture();
+      startCapture(message.tabId);
       break;
     case 'stopRecording':
       stopCapture();
@@ -29,34 +30,33 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 // Audio capture function
-async function startCapture() {
+async function startCapture(tabId) {
   try {
-    debugLog('Starting audio capture...');
+    debugLog('Starting audio capture for tab:', tabId);
+    currentTabId = tabId;
+    
+    // Capture specific tab's audio
     const stream = await chrome.tabCapture.capture({
       audio: true,
-      video: false
+      video: false,
+      tabId: tabId
     });
     
     if (stream) {
-      debugLog('Audio stream captured successfully');
-      
       if (!audioContext) {
         audioContext = new AudioContext();
       }
       
       const source = audioContext.createMediaStreamSource(stream);
       
-      // Initialize transcriber if needed
-      if (!transcriber) {
-        transcriber = new SpeechTranscriber();
-      }
-      
+      // Initialize transcriber
+      transcriber = new SpeechTranscriber();
       transcriber.start();
+      
+      // Connect audio stream to transcriber
       source.connect(audioContext.destination);
       
-      debugLog('Recording started');
-    } else {
-      debugLog('Failed to capture audio stream');
+      debugLog('Recording started for tab:', tabId);
     }
     
   } catch (error) {

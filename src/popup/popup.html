@@ -30,7 +30,7 @@
     .recording-indicator {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
       color: red;
       font-weight: bold;
     }
@@ -106,6 +106,17 @@
       50% { opacity: 0.5; }
       100% { opacity: 1; }
     }
+    .tab-selector {
+        margin-bottom: 16px;
+    }
+    
+    .tab-select {
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-top: 8px;
+    }
   </style>
 </head>
 <body>
@@ -139,6 +150,13 @@
   <div class="keywords">
     <div class="keywords-title">Key Topics:</div>
     <div id="keywordsList"></div>
+  </div>
+  
+  <div class="tab-selector">
+    <h3>Select Audio Source</h3>
+    <select id="tabSelect" class="tab-select">
+        <option value="">Choose a tab...</option>
+    </select>
   </div>
   
   <script src="popup.js"></script>
